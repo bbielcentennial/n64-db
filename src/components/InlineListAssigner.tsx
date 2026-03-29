@@ -8,7 +8,7 @@ export function InlineListAssigner({ gameId, userLists, activeListIds }: { gameI
 
    const handleToggle = (listId: string, isAdded: boolean) => {
       startTransition(() => {
-         toggleGameInListAction(listId, gameId, isAdded);
+         void toggleGameInListAction(listId, gameId, isAdded);
       });
    };
 

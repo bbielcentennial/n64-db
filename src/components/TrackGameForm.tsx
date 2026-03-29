@@ -32,7 +32,7 @@ export default function TrackGameForm({
 
   const handleUpdateUniversal = (newStatus?: string, newScore?: number) => {
       startTransition(() => {
-          updateUserGameAction(gameId, { 
+          void updateUserGameAction(gameId, { 
              status: newStatus !== undefined ? (newStatus as any) : undefined, 
              score: newScore !== undefined ? newScore : undefined 
           });
@@ -41,7 +41,7 @@ export default function TrackGameForm({
 
   const handleToggleList = (listId: string, current: boolean) => {
       startTransition(() => {
-          toggleGameInListAction(listId, gameId, !current); 
+          void toggleGameInListAction(listId, gameId, !current); 
       });
   };
 
@@ -52,7 +52,7 @@ export default function TrackGameForm({
       const res = await createListAction({ title: newTitle, isPublic: true, description: '' });
       if (res.success && res.listId) {
           startTransition(() => {
-             toggleGameInListAction(res.listId!, gameId, true); 
+             void toggleGameInListAction(res.listId!, gameId, true); 
           });
           setNewTitle("");
       }

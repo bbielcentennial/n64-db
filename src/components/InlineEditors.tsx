@@ -12,7 +12,7 @@ export function InlineStarRating({ gameId, currentScore }: EditorProps & { curre
 
    const handleScore = (score: number) => {
       startTransition(() => {
-         updateUserGameAction(gameId, { score });
+         void updateUserGameAction(gameId, { score });
       });
    };
 
@@ -60,12 +60,12 @@ export function InlineStatusSelect({ gameId, currentStatus, customStatus }: Edit
          const str = window.prompt("Enter a Custom Status string (e.g. Speedrunning, Found Cartridge, etc):", customStatus || "");
          if (str !== null) {
             startTransition(() => {
-               updateUserGameAction(gameId, { status: "CUSTOM", customStatus: str });
+               void updateUserGameAction(gameId, { status: "CUSTOM", customStatus: str });
             });
          }
       } else {
          startTransition(() => {
-            updateUserGameAction(gameId, { status, customStatus: null });
+            void updateUserGameAction(gameId, { status, customStatus: null });
          });
       }
    };
