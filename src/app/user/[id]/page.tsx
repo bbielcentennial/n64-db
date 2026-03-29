@@ -111,9 +111,9 @@ export default async function UserProfilePage(props: { params: Promise<{ id: str
                    </div>
                 </Link>
              )}
-             {user.lists.filter(l => isOwner || l.isPublic).map(l => renderListCard(l))}
+             {user.lists.filter((l: any) => isOwner || l.isPublic).map((l: any) => renderListCard(l))}
           </div>
-          {user.lists.filter(l => isOwner || l.isPublic).length === 0 && !isOwner && (
+          {user.lists.filter((l: any) => isOwner || l.isPublic).length === 0 && !isOwner && (
              <p className={styles.emptyText}>No lists have been created yet.</p>
           )}
        </div>
@@ -124,7 +124,7 @@ export default async function UserProfilePage(props: { params: Promise<{ id: str
                <h2>Recent Activity</h2>
              </div>
              <div style={{display: 'flex', flexDirection: 'column', gap: '0.5rem'}}>
-                {user.actionLogs.map(log => {
+                {user.actionLogs.map((log: any) => {
                    let actionText = log.actionType.replace(/_/g, ' ');
                    let infoJSX = <p style={{fontSize: '0.9rem', color: 'var(--text-muted)'}}>System Action</p>;
 
@@ -169,7 +169,7 @@ export default async function UserProfilePage(props: { params: Promise<{ id: str
               <h2>Followed Community Lists</h2>
             </div>
             <div className={styles.listGrid}>
-               {user.listFollows.map(f => renderListCard(f.list, f.list.user.displayName || f.list.user.name))}
+               {user.listFollows.map((f: any) => renderListCard(f.list, f.list.user.displayName ?? f.list.user.name ?? undefined))}
             </div>
          </div>
        )}
