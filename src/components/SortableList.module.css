@@ -1,0 +1,60 @@
+.wrapper {
+  position: relative;
+}
+
+.sortableRow {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-content);
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+.sortableRow:last-child { border-bottom: none; }
+.sortableRow:hover { background-color: var(--bg-main); }
+
+.dragHandle {
+  flex-shrink: 0;
+  cursor: grab;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.5rem 0.25rem 0.5rem 0.5rem;
+  display: flex;
+  align-items: center;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+.sortableRow:hover .dragHandle { opacity: 0.8; }
+.dragHandle:hover { opacity: 1 !important; color: var(--accent); }
+.dragHandle:active { cursor: grabbing; }
+
+/* Row columns — matches list page layout */
+.gameCol  { flex: 4; display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; }
+.scoreCol { flex: 1; text-align: center; padding: 0.75rem 0.5rem; }
+.statusCol { flex: 2; text-align: right; padding: 0.75rem 0.5rem; }
+.actionCol { flex: 1; text-align: right; display: flex; justify-content: flex-end; gap: 0.5rem; padding: 0.75rem 1rem 0.75rem 0; }
+
+.tinyCover { width: 38px; height: 52px; flex-shrink: 0; }
+.placeholderCover { width: 100%; height: 100%; background-color: var(--bg-main); border-radius: 3px; border: 1px solid var(--border-color); }
+.gameTitleBlock { display: flex; flex-direction: column; }
+.gameLink { font-weight: bold; color: var(--link-color); text-decoration: none; }
+.gameLink:hover { text-decoration: underline; }
+.dateAdded { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+.savingBadge {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  background-color: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.2rem 0.75rem;
+  border-radius: 12px;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,212 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// -----------------------------------------------------------------------------
+// Auth.js (NextAuth) Required Models
+// -----------------------------------------------------------------------------
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String  @map("user_id")
+  type               String
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  displayName   String?   @map("display_name") // Custom override representing public alias
+  avatarUrl     String?   @map("avatar_url") // Custom override for generic avatars
+  email         String?   @unique
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  
+  accounts      Account[]
+  sessions      Session[]
+  
+  // Custom Domain Relations
+  lists         List[]
+  listLikes     ListLike[]
+  listFollows   ListFollow[]
+  reviews       Review[]
+  userGames     UserGame[]
+  actionLogs    UserActionLog[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// -----------------------------------------------------------------------------
+// MyN64List DB Domain Models
+// -----------------------------------------------------------------------------
+
+model Game {
+  id            Int      @id // IGDB game ID
+  title         String
+  coverUrl      String?  @map("cover_url")
+  releaseDate   DateTime? @map("release_date")
+  developer     String?
+  summary       String?  @db.Text
+  genres        String?  
+  averageScore   Float    @default(0.0) @map("average_score")
+  completedCount Int      @default(0)   @map("completed_count")
+  playedCount    Int      @default(0)   @map("played_count")
+  addedAt        DateTime @default(now()) @map("added_at")
+
+  listItems     ListItem[]
+  userGames     UserGame[]
+  listsCovered  List[]   @relation("ListCover")
+  reviews       Review[]
+
+  @@map("games")
+}
+
+model List {
+  id          String     @id @default(cuid())
+  title       String     @default("My Collection")
+  description String?    @db.Text
+  isPublic    Boolean    @default(true) @map("is_public")
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  userId      String     @map("user_id")
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  coverGameId Int?       @map("cover_game_id")
+  coverGame   Game?      @relation("ListCover", fields: [coverGameId], references: [id], onDelete: SetNull)
+
+  items       ListItem[]
+  likes       ListLike[]
+  follows     ListFollow[]
+
+  @@map("lists")
+}
+
+model ListLike {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  listId    String   @map("list_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  list List @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listId])
+  @@map("list_likes")
+}
+
+model ListFollow {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  listId    String   @map("list_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  list List @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listId])
+  @@map("list_follows")
+}
+
+enum PlayStatus {
+  PLAN_TO_PLAY
+  PLAYING
+  COMPLETED
+  ON_HOLD
+  DROPPED
+  CUSTOM
+}
+
+model UserGame {
+  id           String     @id @default(cuid())
+  userId       String     @map("user_id")
+  gameId       Int        @map("game_id")
+  score        Int?       
+  status       PlayStatus @default(PLAN_TO_PLAY)
+  customStatus String?    @map("custom_status") 
+  addedAt      DateTime   @default(now()) @map("added_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  game         Game       @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, gameId])
+  @@map("user_games")
+}
+
+model ListItem {
+  id          String     @id @default(cuid())
+  listId      String     @map("list_id")
+  gameId      Int        @map("game_id")
+  order       Float      @default(0)
+  addedAt     DateTime   @default(now()) @map("added_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  list        List       @relation(fields: [listId], references: [id], onDelete: Cascade)
+  game        Game       @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@unique([listId, gameId]) 
+  @@map("list_items")
+}
+
+model UserActionLog {
+  id          String   @id @default(cuid())
+  userId      String   @map("user_id")
+  actionType  String   
+  details     String   @db.Text 
+  createdAt   DateTime @default(now()) @map("created_at")
+  isUndone    Boolean  @default(false) @map("is_undone")
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_action_logs")
+}
+
+model Review {
+  id          String     @id @default(cuid())
+  userId      String     @map("user_id")
+  gameId      Int        @map("game_id")
+  content     String     @db.Text
+  createdAt   DateTime   @default(now()) @map("created_at")
+
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  game        Game       @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@map("reviews")
+}

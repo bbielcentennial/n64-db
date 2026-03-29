@@ -1,0 +1,77 @@
+.communityContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem 0;
+}
+
+.heroSection {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.heroSection h1 { margin: 0 0 0.5rem 0; font-size: 3rem; color: var(--accent); }
+.heroSection p { color: var(--text-muted); font-size: 1.1rem; }
+
+.boardSection {
+  background-color: var(--bg-content);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+.boardSection h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.listGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.listCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.listCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.listCoverWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  background-color: #2a2a35;
+}
+.placeholderListCover {
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(45deg, #1f1f27, #1f1f27 10px, #2a2a35 10px, #2a2a35 20px);
+}
+
+.listCardContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+.listCardContent h3 { margin: 0; font-size: 1.1rem; color: var(--text-header); }
+.listAuthor { font-size: 0.85rem; color: var(--link-color); }
+
+.listMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: 1rem;
+}

@@ -1,0 +1,144 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--bg-content);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+@media (max-width: 768px) {
+  .profileHeader { flex-direction: column; text-align: center; }
+  .settingsLinkBlock { margin-left: 0; margin-top: 1rem; }
+}
+
+.avatar { flex-shrink: 0; }
+.placeholderAvatar {
+  width: 100px; height: 100px;
+  background-color: var(--accent); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; font-weight: bold; border-radius: 50%;
+}
+
+.userInfo h1 { margin: 0 0 0.5rem 0; font-size: 2.5rem; }
+.userJoined { color: var(--text-muted); margin: 0; }
+.settingsLinkBlock { margin-left: auto; }
+.settingsBtn {
+  background-color: transparent;
+  color: var(--link-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.settingsBtn:hover {
+  background-color: var(--bg-main);
+  text-decoration: underline;
+}
+
+.categorySection {
+  background-color: var(--bg-content);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+.sectionHeader h2 { margin: 0; font-size: 1.5rem; }
+
+.emptyText { color: var(--text-muted); font-style: italic; }
+
+.listGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.listCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.listCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.listCoverWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  background-color: var(--bg-main);
+}
+.placeholderListCover {
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(45deg, var(--bg-main), var(--bg-main) 10px, var(--bg-content) 10px, var(--bg-content) 20px);
+}
+.privateBadge {
+  position: absolute;
+  top: 0.5rem; right: 0.5rem;
+  background: rgba(0,0,0,0.8); color: white;
+  padding: 0.2rem 0.6rem; border-radius: 12px;
+  font-size: 0.75rem; font-weight: bold; z-index: 10;
+}
+
+.listCardContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.listCardContent h3 { margin: 0; font-size: 1.1rem; color: var(--text-main); }
+.listAuthor { font-size: 0.8rem; color: var(--link-color); }
+.listMeta {
+  display: flex; justify-content: space-between;
+  font-size: 0.85rem; color: var(--text-muted); margin-top: auto;
+}
+
+/* Create Form Specific */
+.createBtn {
+  background-color: var(--accent); color: white;
+  border: none; padding: 0.5rem 1rem; border-radius: 4px;
+  font-weight: bold; cursor: pointer;
+}
+.createBtn:hover { background-color: var(--accent-hover); }
+.createListFlyout {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 6px;
+  width: 300px;
+}
+.createForm { display: flex; flex-direction: column; gap: 0.8rem; }
+.inputField {
+  background-color: var(--bg-content);
+  color: var(--text-main); border: 1px solid var(--border-color);
+  padding: 0.5rem; border-radius: 4px; width: 100%;
+}
+.toggleRow { display: flex; gap: 1rem; font-size: 0.9rem; }
+.actionsRow { display: flex; gap: 0.5rem; }
+.saveBtn {
+  background-color: var(--accent); color: white; flex: 1;
+  border: none; padding: 0.5rem; border-radius: 4px; font-weight: bold; cursor: pointer;
+}
+.cancelBtn {
+  background-color: transparent; color: var(--text-muted); flex: 1;
+  border: 1px solid var(--border-color); padding: 0.5rem; border-radius: 4px; cursor: pointer;
+}

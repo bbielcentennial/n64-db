@@ -1,0 +1,60 @@
+.settingsContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.settingsHeader {
+  margin-bottom: 2rem;
+}
+.settingsHeader h1 { margin: 0 0 0.5rem 0; }
+.settingsHeader p { color: var(--text-muted); margin: 0; }
+
+.settingsCard {
+  background-color: var(--bg-content);
+  padding: 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.settingsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.formGroup label { font-weight: bold; color: var(--text-header); }
+
+.inputField {
+  background-color: var(--bg-main);
+  color: white;
+  border: 1px solid var(--border-color);
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.inputField:focus { border-color: var(--accent); outline: none; }
+
+.hint { font-size: 0.8rem; color: var(--text-muted); }
+
+.saveBtn {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+.saveBtn:hover { background-color: var(--accent-hover); }
+
+.successBox { color: #2eac68; background: rgba(46, 172, 104, 0.1); padding: 1rem; border-radius: 4px; font-weight: bold; }
+.errorBox { color: #ff4c4c; background: rgba(255, 76, 76, 0.1); padding: 1rem; border-radius: 4px; font-weight: bold; }

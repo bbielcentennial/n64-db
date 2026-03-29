@@ -1,0 +1,30 @@
+services:
+  app:
+    build: .
+    container_name: myn64list-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.production
+    extra_hosts:
+      # Allows the container to reach your Unraid host's LAN IP for Postgres
+      - "host-gateway:host-gateway"
+    networks:
+      - myn64list-net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: myn64list-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
+    networks:
+      - myn64list-net
+    depends_on:
+      - app
+
+networks:
+  myn64list-net:
+    driver: bridge

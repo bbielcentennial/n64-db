@@ -1,0 +1,98 @@
+.header {
+  background-color: var(--bg-header);
+  color: var(--text-header);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--accent-hover);
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-header);
+}
+.brand:hover {
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.navLinks a {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+.navLinks a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userName {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.actionBtn {
+  background: none;
+  border: none;
+  color: var(--text-header);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+.actionBtn:hover {
+  text-decoration: underline;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.navLink {
+  color: var(--text-header);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}

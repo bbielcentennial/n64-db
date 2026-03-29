@@ -1,0 +1,132 @@
+.gamesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.searchHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--bg-content);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+.searchForm {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+  gap: 0.5rem;
+}
+.searchInput {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+.searchBtn {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.filtersRow {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+  gap: 0.5rem;
+}
+.filterSelect {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+.activeFilters {
+  display: flex;
+  gap: 0.5rem;
+}
+.activeTag {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.2rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.activeTag a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.noResults {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  background: var(--bg-content);
+  border-radius: 8px;
+}
+.cardMetaStats {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-main);
+  margin-top: 0.2rem;
+}
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+.gameCard {
+  background-color: var(--bg-content);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.gameCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+[data-theme='dark'] .gameCard:hover {
+  box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+}
+.cardImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  background-color: var(--bg-main);
+}
+.noImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+}
+.cardContent {
+  padding: 1rem;
+}
+.cardContent h3 {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  color: var(--link-color);
+}
+.cardContent p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

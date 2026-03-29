@@ -1,0 +1,310 @@
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.backLink {
+  color: var(--text-muted);
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: -0.5rem;
+}
+.backLink:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+.loginHint a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.loginHint a:hover {
+  text-decoration: underline;
+}
+
+.popularListsBlock {
+  margin-top: 1rem;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+}
+.popularListsBlock h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  color: var(--text-header);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+.popularListsBlock ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.plLink {
+  color: var(--link-color);
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.plLink:hover { text-decoration: underline; }
+.plMeta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+.headerArea {
+  display: flex;
+  gap: 2rem;
+  background-color: var(--bg-content);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+@media (max-width: 768px) {
+  .headerArea {
+    flex-direction: column;
+  }
+}
+.coverWrapper {
+  flex-shrink: 0;
+  position: relative;
+  width: 225px;
+  height: 315px;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+.noCover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+}
+.infoArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+.infoArea h1 {
+  font-size: 2.2rem;
+  margin: 0;
+}
+.metaRow {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.tag {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+.ratingBox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.score {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background-color: var(--accent);
+  padding: 0.2rem 0.8rem;
+  border-radius: 4px;
+}
+.scoreLabel {
+  color: var(--text-main);
+  font-weight: bold;
+}
+.scoreText {
+  display: flex;
+  flex-direction: column;
+}
+.ratingCount {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.devLogoBox {
+  margin-left: auto;
+  opacity: 0.8;
+}
+.actionsBox {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.addBtn {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+}
+.addBtn:hover {
+  background-color: var(--accent-hover);
+}
+.quickStatusRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 300px;
+}
+.statusSelect, .listSelect {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 100%;
+}
+.listSelect {
+  margin-bottom: 0.25rem;
+}
+
+/* 5-Star Half-Rating System Magic */
+.starRating {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 1.5rem;
+}
+.starWrapper {
+  position: relative;
+  display: inline-block;
+  width: 1.2rem;
+  text-align: center;
+}
+.starHalfLeft {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 50%;
+  z-index: 2;
+  cursor: pointer;
+}
+.starHalfRight {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 50%;
+  z-index: 2;
+  cursor: pointer;
+}
+.starIcon {
+  color: var(--border-color);
+  transition: color 0.1s;
+}
+.fullStar {
+  color: var(--accent);
+}
+.halfStar {
+  color: transparent;
+  background: linear-gradient(90deg, var(--accent) 50%, var(--border-color) 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.emptyStar {
+  color: var(--border-color);
+}
+.scoreTextLabel {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-main);
+  margin-left: 0.5rem;
+  min-width: 25px;
+}
+.loginHint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.contentArea {
+  background-color: var(--bg-content);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+.contentArea h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+.tableHeader {
+  margin-top: 2.5rem;
+}
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background-color: var(--bg-main);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+.dataTable th, .dataTable td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+.dataTable th {
+  background-color: var(--bg-content);
+  font-weight: bold;
+  width: 30%;
+}
+.esrbBadge {
+  background-color: var(--bg-main);
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+.shortReleases {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  max-width: max-content;
+  border-left: 3px solid var(--accent);
+}
+.summaryText {
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 2rem;
+}
+.screenshotsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.screenshotFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--bg-main);
+}

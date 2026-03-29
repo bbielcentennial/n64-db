@@ -1,0 +1,85 @@
+.inlineStarRow {
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+}
+.pendingState {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.starWrapper {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.starVisual {
+  font-size: 20px;
+  line-height: 20px;
+  user-select: none;
+  transition: transform 0.1s;
+}
+
+.halfLeft {
+  position: absolute;
+  top: 0; left: 0;
+  width: 50%; height: 100%;
+  z-index: 10;
+}
+.halfRight {
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%; height: 100%;
+  z-index: 10;
+}
+
+.halfLeft:hover ~ .starVisual,
+.halfRight:hover ~ .starVisual {
+  transform: scale(1.2);
+}
+
+.inlineSelect {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.inlineSelect.COMPLETED { color: #2eac68; border-color: #2eac68; }
+.inlineSelect.PLAYING { color: #f2a900; border-color: #f2a900; }
+.inlineSelect.PLAN_TO_PLAY { color: var(--text-main); }
+.inlineSelect.DROPPED { color: #e74c3c; border-color: #e74c3c; }
+
+.inlineBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: flex-end;
+}
+.listBadge {
+  background-color: var(--bg-hover);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.listBadge:hover {
+  background-color: var(--border-color);
+}
+.activeBadge {
+  background-color: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.activeBadge:hover {
+  background-color: var(--accent-hover);
+}
